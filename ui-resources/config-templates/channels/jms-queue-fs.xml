@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel 
+         tmpl-alias="Channel" 
+         tmpl-alias-value="channel" 
+         tmpl-author="Adaptris" 
+         tmpl-class-name="com.adaptris.core.Channel" 
+         tmpl-created="2015-11-17T10:00:00" 
+         tmpl-desc="Consume from a JMS Queue and write to File System" 
+         tmpl-keywords="File System JMS Queue" 
+         tmpl-name="JMS Queue to Filesystem" 
+         tmpl-target-version="3.11.0-RELEASE" 
+         tmpl-title="JMS Queue to Filesystem Channel Template" 
+         tmpl-type="channel" tmpl-wizard="true"
+         wizard-jms-order="0" wizard-jms-desc="Configure the JMS Consumer"
+         wizard-filesystem-order="1" wizard-filesystem-desc="Configure the filesystem"
+>
+  <consume-connection class="shared-connection">
+    <lookup-name wizard-key="JmsSharedConnection"
+                 wizard-label="JMS Connection ID"
+                 wizard-desc="The ID of the JMS connection in the shared connections list"
+                 wizard-step="jms">jms-connection</lookup-name>
+  </consume-connection>
+  <workflow-list>
+    <standard-workflow>
+      <consumer class="jms-queue-consumer">
+        <queue wizard-key="JMSQueue"
+               wizard-label="JMS Queue"
+               wizard-desc="The JMS Queue"
+               wizard-step="jms">
+        </queue>
+      </consumer>
+      <service-collection class="service-list">
+        <services>
+        </services>
+      </service-collection>
+      <producer class="fs-producer">
+        <unique-id>DropFile</unique-id>
+        <base-directory-url wizard-key="dropDirectoryUrl"
+							wizard-desc="Location URL where to drop the file"
+							wizard-step="filesystem"></base-directory-url>
+        <create-dirs>true</create-dirs>
+      </producer>
+    </standard-workflow>
+  </workflow-list>
+
+</channel>

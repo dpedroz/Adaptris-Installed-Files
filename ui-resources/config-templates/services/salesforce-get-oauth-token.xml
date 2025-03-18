@@ -1,0 +1,27 @@
+<!-- Use by the UI salesforce config page -->
+<get-oauth-token              
+         tmpl-alias="Get OAuth Token" 
+         tmpl-alias-value="get-oauth-token" 
+         tmpl-author="Adaptris" 
+         tmpl-class-name="com.adaptris.core.http.oauth.GetOauthToken" 
+         tmpl-created="2017-09-18T10:00:00" 
+         tmpl-desc="Get salesforce OAuth authentication token" 
+         tmpl-keywords="oauth salesforce" 
+         tmpl-name="Salesforce Get OAuth Token" 
+         tmpl-target-version="3.6.0-RELEASE" 
+         tmpl-title="Get Salesforce OAuth Authentication Token"
+         tmpl-type="service" tmpl-wizard="true"
+         wizard-account-order="0" wizard-account-desc="Salesforce Account"
+>
+  <unique-id>Salesforce Get OAuth Token</unique-id>
+  <access-token-writer class="oauth-access-token-to-metadata">
+    <token-key>Authorization</token-key>
+  </access-token-writer>
+  <access-token-builder class="salesforce-access-token">
+    <username wizard-key="username" wizard-desc="Salesforce username" wizard-step="account" wizard-order="0" wizard-type="string"></username>
+    <password wizard-key="password" wizard-desc="Salesforce password" wizard-step="account" wizard-order="1" wizard-type="password"></password>
+    <consumer-key wizard-key="consumer.key" wizard-desc="Salesforce consumer key" wizard-step="account" wizard-order="2" wizard-type="string"></consumer-key>
+    <consumer-secret wizard-key="consumer.secret" wizard-desc="Salesforce consumer secret" wizard-step="account" wizard-type="password" wizard-order="3"></consumer-secret>
+    <token-url wizard-key="token.url" wizard-desc="Salesforce token URL" wizard-step="account" wizard-type="string" wizard-order="4"></token-url>
+  </access-token-builder>
+</get-oauth-token>

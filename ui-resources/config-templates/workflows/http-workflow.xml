@@ -1,0 +1,35 @@
+<pooling-workflow 
+         tmpl-alias="Pooling Workflow" 
+         tmpl-alias-value="pooling-workflow" 
+         tmpl-author="Adaptris" 
+         tmpl-class-name="com.adaptris.core.PoolingWorkflow" 
+         tmpl-created="2015-11-17T10:00:00" 
+         tmpl-desc="Accept a HTTP Request, and send a response" 
+         tmpl-keywords="HTTP Request Handler Jetty Message Response" 
+         tmpl-name="HTTP Request Handler" 
+         tmpl-target-version="3.11.0-RELEASE" 
+         tmpl-title="HTTP Request Handler Workflow Template"
+         tmpl-type="workflow" tmpl-wizard="true"
+         wizard-http-order="0" wizard-http-desc="Configure the HTTP Consumer"
+>
+  <jetty-pooling-workflow-interceptor/>
+  <consumer class="jetty-message-consumer">
+    <path wizard-key="Path" wizard-desc="The URL path for incoming requests" wizard-step="http"></path>
+  </consumer>
+  <service-collection class="service-list">
+    <services>
+      <standalone-producer>
+        <producer class="jetty-standard-response-producer">
+          <status-provider class="http-configured-status">
+            <status>OK_200</status>
+          </status-provider>
+          <response-header-provider class="jetty-no-response-headers"/>
+          <content-type-provider class="http-configured-content-type-provider">
+            <mime-type>text/plain</mime-type>
+          </content-type-provider>
+          <send-payload>true</send-payload>
+        </producer>
+      </standalone-producer>
+    </services>
+  </service-collection>
+</pooling-workflow>

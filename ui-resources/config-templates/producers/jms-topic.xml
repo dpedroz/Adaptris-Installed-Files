@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jms-topic-producer 
+         tmpl-alias="JMS Topic Producer" 
+         tmpl-alias-value="jms-topic-producer" 
+         tmpl-author="Adaptris" 
+         tmpl-class-name="com.adaptris.core.jms.PasProducer" 
+         tmpl-created="2015-11-17T10:00:00" 
+         tmpl-desc="Produce a message to a JMS Topic" 
+         tmpl-keywords="JMS Topic Producer" 
+         tmpl-name="JMS Topic Producer" 
+         tmpl-target-version="3.11.0-RELEASE" 
+         tmpl-title="JMS Topic Producer Template"
+         tmpl-type="producer" tmpl-wizard="true"
+         wizard-jms-order="0" wizard-jms-desc="Configure the JMS Producer"
+>
+   <topic wizard-key="JMSTopic"
+                wizard-label="JMS Topic"
+                wizard-desc="The JMS Topic"
+                wizard-step="jms"></topic>
+  <delivery-mode>PERSISTENT</delivery-mode>
+  <message-translator class="text-message-translator"/>
+</jms-topic-producer>
+

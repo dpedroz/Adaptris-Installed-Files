@@ -1,0 +1,28 @@
+<fs-consumer 
+         tmpl-alias="FS Consumer" 
+         tmpl-alias-value="fs-consumer" 
+         tmpl-author="Adaptris" 
+         tmpl-class-name="com.adaptris.core.fs.FsConsumer" 
+         tmpl-created="2015-11-17T10:00:00" 
+         tmpl-desc="Pickup a file (the message) from Filesystem" 
+         tmpl-keywords="File System Consumer" 
+         tmpl-name="File System Consumer" 
+         tmpl-target-version="3.11.0-RELEASE" 
+         tmpl-title="File System Consumer Template" 
+         tmpl-type="consumer" tmpl-wizard="true"
+         wizard-filesystem-order="0" wizard-filesystem-desc="Configure the pickup"
+>
+  <base-directory-url wizard-key="pickupDirectoryUrl"
+                 wizard-desc="Location URL where to pick up the file"
+                 wizard-step="filesystem"></base-directory-url>
+  <poller class="fixed-interval-poller">
+    <poll-interval>
+      <unit>SECONDS</unit>
+      <interval wizard-key="pickupInterval"
+                wizard-label="Seconds between each poll"
+                wizard-desc="The number of seconds between each poll"
+                wizard-step="filesystem">20</interval>
+    </poll-interval>
+  </poller>
+  <create-dirs>true</create-dirs>
+</fs-consumer>

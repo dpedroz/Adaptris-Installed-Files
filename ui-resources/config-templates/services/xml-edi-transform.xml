@@ -1,0 +1,28 @@
+<xml-edi-stream-service 
+         tmpl-alias="XML EDI Stream Service" 
+         tmpl-alias-value="xml-edi-stream-service" 
+         tmpl-author="Adaptris" 
+         tmpl-class-name="com.adaptris.core.transform.edi.XmlEdiStreamService" 
+         tmpl-created="2015-11-17T10:00:00" 
+         tmpl-desc="XML to EDI Transform Service (Requires optional/edi-stream jars)" 
+         tmpl-keywords="EDI XML Transform" 
+         tmpl-name="Apply an XML to EDI Transformation" 
+         tmpl-target-version="3.1.0-RELEASE" 
+         tmpl-title="Transform XML to EDI Service Template"
+         tmpl-type="service" tmpl-wizard="true"
+		 tmpl-optional-components="interlok-edistream"
+         wizard-transform-order="0" wizard-transform-desc="Configure the Transform"
+>
+
+ <edi-separator-set class="edi-custom-separators">
+  <separator-chars>:+.? &apos;+</separator-chars>
+  <invalid-chars>:+?&apos;</invalid-chars>
+ </edi-separator-set>
+ <xml-tagnames class="edi-legacy-xml-tag-names"/>
+ <input-charset>US-ASCII</input-charset>
+ <output-charset>UTF-8</output-charset>
+ <xml-definition-url wizard-key="EDI Definition File" wizard-desc="The GXML definition File" wizard-step="transform"></xml-definition-url>
+ <messageName wizard-key="Message Type" wizard-desc="The EDI Message Type" wizard-step="transform">INVOIC</messageName>
+ <messageVersion wizard-key="Message Version" wizard-desc="The EDI Message Version" wizard-step="transform">D96A</messageVersion>
+ <messageOrganisation wizard-key="Message Organisation" wizard-desc="The type of EDI mesage (generally EDIFACT, X12, TRADACOMS)" wizard-step="transform">EDIFACT</messageOrganisation>
+</xml-edi-stream-service>
